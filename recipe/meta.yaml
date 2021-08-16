@@ -16,16 +16,21 @@ build:
 
 requirements:
   host:
-    - pip >=3.6
-    - python
+    - pip
+    - python >=3.6
+    - setuptools
   run:
     - docutils
     - python >=3.6
-    - sphinx >=2,<4
+    - sphinx >=2,<5
 
 test:
+  requires:
+    - pip
   imports:
     - sphinx_panels
+  commands:
+    - python -m pip check
 
 about:
   home: https://github.com/executablebooks/sphinx-panels
