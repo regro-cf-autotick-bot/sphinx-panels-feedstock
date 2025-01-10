@@ -6,27 +6,28 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: d36dcd26358117e11888f7143db4ac2301ebe90873ac00627bf1fe526bf0f058
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
     - setuptools
   run:
     - docutils
-    - python >=3.6
+    - python >={{ python_min }}
     - sphinx >=2,<5
 
 test:
   requires:
     - pip
+    - python {{ python_min }}
   imports:
     - sphinx_panels
   commands:
